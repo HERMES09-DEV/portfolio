@@ -1,20 +1,19 @@
 import type { Metadata } from 'next'
-import { Fraunces, Manrope } from 'next/font/google'
+import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import Nav from '@/components/Nav'
 
-const fraunces = Fraunces({
+const geist = Geist({
   subsets: ['latin'],
   weight: 'variable',
-  style: ['normal', 'italic'],
-  variable: '--font-fraunces',
+  variable: '--font-geist',
   display: 'swap',
 })
 
-const manrope = Manrope({
+const geistMono = Geist_Mono({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-manrope',
+  weight: 'variable',
+  variable: '--font-geist-mono',
   display: 'swap',
 })
 
@@ -34,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${manrope.variable}`}>
+    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
       <body className="bg-void text-snow min-h-screen">
         <Nav />
         {children}

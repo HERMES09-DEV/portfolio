@@ -28,12 +28,12 @@ const stack = [
   {
     category: 'Application',
     items: ['Next.js', 'React', 'TypeScript', 'Node.js', 'Laravel', 'PHP'],
-    tone: 'border-teal/30 bg-teal/10 text-teal',
+    tone: 'border-purple/35 bg-purple/10 text-purple-glow',
   },
   {
     category: 'Data & Ops',
     items: ['MySQL', 'Prisma', 'Auth', 'Audit trails', 'Vercel', 'GitLab'],
-    tone: 'border-rose/30 bg-rose/10 text-rose',
+    tone: 'border-purple-bright/35 bg-purple-bright/10 text-purple-glow',
   },
 ]
 
@@ -143,10 +143,13 @@ function HeroSignal() {
   return (
     <div className="hero-board motion-safe:animate-float-slow" aria-hidden="true">
       <div className="hero-board-header">
-        <span>HG / 2026</span>
+        <span>&#9791; / 2026</span>
         <span>Manila build room</span>
       </div>
-      <div className="hero-board-mark">Hermes</div>
+      <div className="hero-symbol-wrap">
+        <div className="hero-symbol-orbit" />
+        <div className="hero-symbol">&#9791;</div>
+      </div>
       <div className="hero-board-lines">
         <span />
         <span />
@@ -225,7 +228,7 @@ export default function Home() {
 
           <Reveal delay={120} className="project-showcase">
             <div className="project-copy">
-              <p className="font-mono text-xs uppercase text-teal">
+              <p className="font-mono text-xs uppercase text-purple-glow">
                 Multi-tenant POS and menu system
               </p>
               <h3 className="mt-5 font-display text-4xl leading-tight text-snow md:text-6xl">
@@ -273,7 +276,7 @@ export default function Home() {
           <div className="mt-16 grid gap-px bg-border md:grid-cols-3">
             {nextBuilds.map((item, index) => (
               <Reveal key={item.title} delay={index * 90}>
-                <div className="h-full bg-card p-7 transition duration-300 hover:bg-surface">
+                <div className="h-full bg-card p-7 transition duration-300 hover:-translate-y-1 hover:bg-surface">
                   <p className="font-mono text-xs text-gold/70">{item.label}</p>
                   <h3 className="mt-5 font-display text-2xl text-snow">
                     {item.title}
@@ -352,7 +355,7 @@ export default function Home() {
                 Some projects are practical, some are strange, and some are
                 still unnamed. If it ships under Hermes, it ships as ours.
               </p>
-              <blockquote className="border-l border-gold/50 pl-6 font-display text-3xl italic leading-tight text-gold-bright md:text-4xl">
+              <blockquote className="border-l border-gold/50 pl-6 font-display text-3xl leading-tight text-gold-bright md:text-4xl">
                 No single point of failure. No single face.
               </blockquote>
             </div>
@@ -364,7 +367,7 @@ export default function Home() {
         <div className="gold-line" />
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 py-10 text-sm text-muted md:flex-row">
           <div className="flex items-center gap-3">
-            <span className="brand-mark">HG</span>
+            <span className="brand-mark">&#9791;</span>
             <span className="font-mono text-xs uppercase">Hermes Group</span>
           </div>
           <p className="font-mono text-xs">

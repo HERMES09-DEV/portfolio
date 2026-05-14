@@ -16,7 +16,7 @@ export default function Nav() {
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
         <Link href="/" className="group flex items-center gap-3">
           <span className="brand-mark transition duration-300 group-hover:border-gold/70">
-            HG
+            &#9791;
           </span>
           <span className="font-mono text-xs uppercase text-snow">
             Hermes Group

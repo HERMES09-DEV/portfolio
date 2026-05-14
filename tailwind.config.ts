@@ -9,44 +9,35 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['var(--font-fraunces)', 'serif'],
-        sans: ['var(--font-manrope)', 'sans-serif'],
-        mono: [
-          'ui-monospace',
-          'SFMono-Regular',
-          'Menlo',
-          'Monaco',
-          'Consolas',
-          'Liberation Mono',
-          'Courier New',
-          'monospace',
-        ],
+        display: ['var(--font-geist)', 'sans-serif'],
+        sans: ['var(--font-geist)', 'sans-serif'],
+        mono: ['var(--font-geist-mono)', 'monospace'],
       },
       colors: {
-        void: '#08080a',
-        surface: '#101114',
-        card: '#15161a',
-        border: '#272932',
+        void: '#05040a',
+        surface: '#0d0a16',
+        card: '#120e1d',
+        border: '#251d38',
         purple: {
-          dim: '#2d254c',
-          DEFAULT: '#7c5cff',
-          bright: '#ad9bff',
-          glow: '#b9a8ff',
+          dim: '#261049',
+          DEFAULT: '#7c3aed',
+          bright: '#a855f7',
+          glow: '#c084fc',
         },
         gold: {
-          dim: '#7b6325',
-          DEFAULT: '#d6b85a',
-          bright: '#f1d982',
+          dim: '#725719',
+          DEFAULT: '#c9a84c',
+          bright: '#f3d77b',
         },
-        teal: '#6bc7b1',
-        rose: '#e88f7a',
-        snow: '#f7f1e8',
-        muted: '#96918a',
+        snow: '#f4efff',
+        muted: '#9a8db8',
       },
       animation: {
         'float-slow': 'floatSlow 8s ease-in-out infinite',
         'line-sweep': 'lineSweep 5.5s ease-in-out infinite',
         'soft-pulse': 'softPulse 3.5s ease-in-out infinite',
+        'symbol-glow': 'symbolGlow 4.8s ease-in-out infinite',
+        'orbit': 'orbit 18s linear infinite',
       },
       keyframes: {
         floatSlow: {
@@ -60,6 +51,14 @@ const config: Config = {
         softPulse: {
           '0%, 100%': { opacity: '0.55' },
           '50%': { opacity: '1' },
+        },
+        symbolGlow: {
+          '0%, 100%': { opacity: '0.68', transform: 'scale(1)' },
+          '50%': { opacity: '1', transform: 'scale(1.025)' },
+        },
+        orbit: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
         },
       },
     },

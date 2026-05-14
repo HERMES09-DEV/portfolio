@@ -35,7 +35,7 @@ export default function ContactPage() {
               <p className="font-mono text-xs uppercase text-muted/60">Email</p>
               <a
                 href="mailto:hello@hermesgroup.dev"
-                className="mt-2 inline-flex font-display text-2xl italic text-gold-bright transition hover:text-snow"
+                className="mt-2 inline-flex font-display text-2xl text-gold-bright transition hover:text-snow"
               >
                 hello@hermesgroup.dev
               </a>
@@ -47,7 +47,7 @@ export default function ContactPage() {
                 href="https://gitlab.com/hermesgroup"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 inline-flex font-display text-2xl italic text-teal transition hover:text-snow"
+                className="mt-2 inline-flex font-display text-2xl text-purple-glow transition hover:text-snow"
               >
                 gitlab.com/hermesgroup
               </a>
@@ -55,7 +55,7 @@ export default function ContactPage() {
 
             <div>
               <p className="font-mono text-xs uppercase text-muted/60">Based in</p>
-              <p className="mt-2 font-display text-2xl italic text-snow/70">
+              <p className="mt-2 font-display text-2xl text-snow/70">
                 Manila, Philippines
               </p>
             </div>
@@ -77,7 +77,7 @@ export default function ContactPage() {
                 value={name}
                 onChange={(event) => setName(event.target.value)}
                 placeholder="Your name"
-                className="w-full border border-border bg-void px-4 py-3 text-sm text-snow outline-none transition placeholder:text-muted/40 focus:border-teal/60"
+                className="w-full border border-border bg-void px-4 py-3 text-sm text-snow outline-none transition placeholder:text-muted/40 focus:border-purple/60"
               />
             </div>
 
@@ -90,7 +90,7 @@ export default function ContactPage() {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder="your@email.com"
-                className="w-full border border-border bg-void px-4 py-3 text-sm text-snow outline-none transition placeholder:text-muted/40 focus:border-teal/60"
+                className="w-full border border-border bg-void px-4 py-3 text-sm text-snow outline-none transition placeholder:text-muted/40 focus:border-purple/60"
               />
             </div>
 
@@ -103,7 +103,7 @@ export default function ContactPage() {
                 onChange={(event) => setMessage(event.target.value)}
                 rows={5}
                 placeholder="What are we building?"
-                className="w-full resize-none border border-border bg-void px-4 py-3 text-sm text-snow outline-none transition placeholder:text-muted/40 focus:border-teal/60"
+                className="w-full resize-none border border-border bg-void px-4 py-3 text-sm text-snow outline-none transition placeholder:text-muted/40 focus:border-purple/60"
               />
             </div>
 
@@ -122,7 +122,7 @@ export default function ContactPage() {
         <div className="gold-line" />
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 py-10 text-sm text-muted md:flex-row">
           <div className="flex items-center gap-3">
-            <span className="brand-mark">HG</span>
+            <span className="brand-mark">&#9791;</span>
             <span className="font-mono text-xs uppercase">Hermes Group</span>
           </div>
           <p className="font-mono text-xs">
