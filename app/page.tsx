@@ -357,7 +357,7 @@ export default function Home() {
                 Who we are
               </p>
               <h2 className="mt-3 font-display text-5xl leading-[0.95] text-snow md:text-7xl">
-                Stacked. Team.
+                Stacked Team.
               </h2>
             </div>
           </Reveal>
