@@ -395,6 +395,24 @@
     will-change: clip-path, transform, opacity;
   }
 
+  .hero-title {
+    margin-top: 1.25rem;
+    max-width: 7ch;
+    color: #f4efff;
+    font-family: var(--font-geist), sans-serif;
+    font-size: clamp(3.5rem, 7.6vw, 7rem);
+    font-weight: 300;
+    line-height: 0.86;
+  }
+
+  .hero-title .scramble-text {
+    min-width: 6.2ch;
+  }
+
+  .hero-title-tail {
+    display: block;
+  }
+
   .hero-grid {
     position: absolute;
     inset: 0;
