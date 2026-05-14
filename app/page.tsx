@@ -172,12 +172,12 @@ export default function Home() {
       <section className="relative isolate min-h-[86svh] px-6 py-20 sm:py-24">
         <div className="hero-grid" aria-hidden="true" />
 
-        <div className="relative mx-auto grid max-w-6xl gap-14 pt-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(340px,0.95fr)] lg:items-center">
+        <div className="relative mx-auto grid max-w-6xl gap-14 pt-8 xl:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.92fr)] xl:items-center">
           <div className="hero-enter">
             <p className="font-mono text-xs uppercase text-gold/75">
               Manila, Philippines
             </p>
-            <h1 className="mt-5 font-display text-[clamp(4.4rem,13vw,11rem)] font-light leading-[0.82] text-snow">
+            <h1 className="mt-5 font-display text-[clamp(4.2rem,10vw,9rem)] font-light leading-[0.82] text-snow">
               <ScrambleText text="HERMES Group" />
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-8 text-muted md:text-xl">
