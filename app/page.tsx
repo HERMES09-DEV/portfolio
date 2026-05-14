@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Reveal from '@/components/Reveal'
+import ScrambleText from '@/components/ScrambleText'
 
 const coffeeHighlights = [
   'Public shop selector and tenant-specific menus',
@@ -176,8 +177,8 @@ export default function Home() {
             <p className="font-mono text-xs uppercase text-gold/75">
               Manila, Philippines
             </p>
-            <h1 className="mt-5 font-display text-[clamp(4.4rem,13vw,11rem)] leading-[0.82] text-snow">
-              Hermes Group
+            <h1 className="mt-5 font-display text-[clamp(4.4rem,13vw,11rem)] font-black leading-[0.82] text-snow">
+              <ScrambleText text="HERMES Group" />
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-8 text-muted md:text-xl">
               Born in Manila. Made of many. Known as one. We are a collective
@@ -358,6 +359,9 @@ export default function Home() {
               <blockquote className="border-l border-gold/50 pl-6 font-display text-3xl leading-tight text-gold-bright md:text-4xl">
                 No single point of failure. No single face.
               </blockquote>
+              <p className="font-mono text-xs uppercase text-muted/50">
+                A quiet dedication: for Bubba, from Bubba.
+              </p>
             </div>
           </Reveal>
         </div>
