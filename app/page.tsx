@@ -3,10 +3,10 @@ import Reveal from '@/components/Reveal'
 import ScrambleText from '@/components/ScrambleText'
 
 const coffeeHighlights = [
-  'Public shop selector and tenant-specific menus',
-  'Role-aware admin workspace for staff, admins, and superadmins',
-  'Orders, KDS queue, inventory, promotions, and customers',
-  'Analytics, tenant settings, staff controls, and audit logs',
+  'Shop selector and tenant menus',
+  'Role-aware admin workspace',
+  'Orders, KDS, inventory, promos',
+  'Analytics, settings, audit logs',
 ]
 
 const coffeeStack = [
@@ -18,7 +18,7 @@ const coffeeStack = [
   'Tailwind CSS',
 ]
 
-const heroTags = ['SaaS', 'Multi Tenant Apps', 'Admin Dashboards']
+const heroTags = ['Product UI', 'SaaS', 'Ops tools']
 
 const stack = [
   {
@@ -41,18 +41,18 @@ const stack = [
 const nextBuilds = [
   {
     label: '01',
-    title: 'Operational dashboards',
-    copy: 'Readable control surfaces for teams that need to compare, review, and act quickly.',
+    title: 'Ops dashboards',
+    copy: 'Dense surfaces for fast decisions.',
   },
   {
     label: '02',
-    title: 'Commerce workflows',
-    copy: 'Ordering, inventory, reporting, and customer flows shaped around daily operations.',
+    title: 'Commerce flow',
+    copy: 'Orders, inventory, reporting.',
   },
   {
     label: '03',
-    title: 'Private tools',
-    copy: 'Focused internal systems with permissions, auditability, and the right amount of polish.',
+    title: 'Private systems',
+    copy: 'Permissioned tools that stay tidy.',
   },
 ]
 
@@ -91,9 +91,10 @@ function CoffeePlatformPreview() {
 
   return (
     <div className="product-screen" aria-label="Coffee Platform interface preview">
+      <div className="product-scanline" aria-hidden="true" />
       <div className="product-screen-top">
         <span>Coffee Platform</span>
-        <span>Tenant: Cafe Luna</span>
+        <span>Tenant: Luna</span>
       </div>
 
       <div className="product-metrics">
@@ -134,6 +135,13 @@ function CoffeePlatformPreview() {
               <em>{item.time}</em>
             </div>
           ))}
+
+          <div className="product-flow" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
         </div>
       </div>
     </div>
@@ -141,16 +149,35 @@ function CoffeePlatformPreview() {
 }
 
 function HeroSignal() {
+  const nodes = ['Build', 'Ship', 'Tune']
+
   return (
     <div className="hero-board motion-safe:animate-float-slow" aria-hidden="true">
+      <div className="hero-board-scan" />
       <div className="hero-board-header">
         <span>&#9791; / 2026</span>
-        <span>Manila build room</span>
+        <span>Manila studio</span>
       </div>
-      <div className="hero-symbol-wrap">
-        <div className="hero-symbol-orbit" />
+
+      <div className="hero-signal-core">
+        <span className="hero-axis hero-axis-x" />
+        <span className="hero-axis hero-axis-y" />
+        <div className="hero-ring hero-ring-one" />
+        <div className="hero-ring hero-ring-two" />
         <div className="hero-symbol">&#9791;</div>
+        {nodes.map((node) => (
+          <span key={node} className="hero-node">
+            {node}
+          </span>
+        ))}
       </div>
+
+      <div className="hero-telemetry">
+        {['Product', 'Systems', 'Ops'].map((item) => (
+          <span key={item}>{item}</span>
+        ))}
+      </div>
+
       <div className="hero-board-lines">
         <span />
         <span />
@@ -181,9 +208,8 @@ export default function Home() {
               <ScrambleText text="HERMES Group" />
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-8 text-muted md:text-xl">
-              Born in Manila. Made of many. Known as one. We are a collective
-              of different occupations, disciplines, and after-hours obsessions
-              building software under a shared name.
+              A Manila-born collective building crisp SaaS, dashboards, and
+              operational tools under one shared mark.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               {heroTags.map((tag) => (
@@ -211,9 +237,7 @@ export default function Home() {
         </div>
 
         <div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-xs text-muted/60 md:block">
-          <a href="#work" className="soft-link">
-            Scroll to selected work
-          </a>
+          <a href="#work" className="scroll-cue" aria-label="Scroll to selected work" />
         </div>
       </section>
 
@@ -223,7 +247,7 @@ export default function Home() {
             <SectionHeader
               label="Selected work"
               title="Coffee Platform"
-              copy="The featured build is a real multi-tenant coffee shop POS and public menu platform, updated here to match the app in the sibling coffee-platform project."
+              copy="Tenant menus, POS operations, and kitchen flow in one product."
             />
           </Reveal>
 
@@ -233,13 +257,11 @@ export default function Home() {
                 Multi-tenant POS and menu system
               </p>
               <h3 className="mt-5 font-display text-4xl leading-tight text-snow md:text-6xl">
-                A coffee platform for menu discovery, shop operations, and
-                kitchen flow.
+                Tenant menus, POS, and kitchen flow in one calm system.
               </h3>
               <p className="mt-6 max-w-2xl text-base leading-8 text-muted">
-                Built around tenant-scoped cafes, public menus, authenticated
-                admin workspaces, role permissions, and the operational tools a
-                coffee shop needs once orders start moving.
+                Built for cafes that need public menus, staff permissions, and
+                live operational control once orders start moving.
               </p>
 
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -298,7 +320,7 @@ export default function Home() {
             <SectionHeader
               label="Stack"
               title="What we use"
-              copy="A practical toolkit for interfaces, back-office systems, data-backed apps, and deployment workflows."
+              copy="A practical toolkit for interfaces, data-backed apps, and deployment."
             />
           </Reveal>
 
@@ -334,7 +356,7 @@ export default function Home() {
                 Who we are
               </p>
               <h2 className="mt-3 font-display text-5xl leading-[0.95] text-snow md:text-7xl">
-                Made of many. Known as one.
+                Many hands. One mark.
               </h2>
             </div>
           </Reveal>
@@ -342,19 +364,9 @@ export default function Home() {
           <Reveal delay={120}>
             <div className="space-y-6 text-base leading-8 text-muted md:text-lg">
               <p>
-                Hermes Group is less a roster than a signal. Among us are
-                frontend builders, backend engineers, systems administrators,
-                operators, artists, and people whose work outside Hermes may
-                have nothing to do with IT.
-              </p>
-              <p>
-                What joins us is the standard we keep when the room gathers:
-                hand off cleanly, build with intention, and move from the query
-                to the pixel without losing the thread.
-              </p>
-              <p>
-                Some projects are practical, some are strange, and some are
-                still unnamed. If it ships under Hermes, it ships as ours.
+                Hermes Group is a Manila-born collective of builders, operators,
+                and artists. We ship practical systems with clean handoffs,
+                sharp interfaces, and software that holds up after launch.
               </p>
               <blockquote className="border-l border-gold/50 pl-6 font-display text-3xl leading-tight text-gold-bright md:text-4xl">
                 No single point of failure. No single face.

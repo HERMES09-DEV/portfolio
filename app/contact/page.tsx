@@ -16,8 +16,7 @@ export default function ContactPage() {
             </h1>
 
             <p className="mt-8 max-w-xl text-base leading-8 text-muted md:text-lg">
-              We do not have an official email yet. For now, follow the trail
-              through GitLab.
+              Until the inbox goes live, GitLab is the trailhead.
             </p>
           </div>
         </Reveal>
@@ -40,8 +39,7 @@ export default function ContactPage() {
                 hermesgroup
               </h2>
               <p className="mt-5 text-sm leading-7 text-muted md:text-base">
-                Projects, repositories, and public traces live here while the
-                rest remains in motion.
+                Projects and public traces live here.
               </p>
             </div>
             <span className="contact-panel-action">Open GitLab</span>
