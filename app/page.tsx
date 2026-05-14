@@ -1,205 +1,390 @@
 import Link from 'next/link'
+import Reveal from '@/components/Reveal'
 
-const stack = {
-  Frontend: [
-    { label: 'Next.js',     color: 'bg-white/10 text-snow' },
-    { label: 'React',       color: 'bg-[#20232a] text-[#61DAFB]' },
-    { label: 'TypeScript',  color: 'bg-[#007ACC22] text-[#7aaaff]' },
-    { label: 'Tailwind',    color: 'bg-[#38B2AC22] text-[#6ee7e7]' },
-    { label: 'Figma',       color: 'bg-[#F24E1E22] text-[#f9865a]' },
-  ],
-  'Backend & DB': [
-    { label: 'Node.js',   color: 'bg-[#6DA55F22] text-[#9ed87a]' },
-    { label: 'PHP',       color: 'bg-[#777BB422] text-[#b0b4f5]' },
-    { label: 'Laravel',   color: 'bg-[#FF2D2022] text-[#f97b7b]' },
-    { label: 'Python',    color: 'bg-[#3670A022] text-[#7ab8e8]' },
-    { label: 'MySQL',     color: 'bg-[#4479A122] text-[#7ab0d8]' },
-    { label: 'Prisma',    color: 'bg-[#3982CE22] text-[#7ab4f5]' },
-  ],
-  'Tooling & Deploy': [
-    { label: 'Vercel',  color: 'bg-white/10 text-snow' },
-    { label: 'ESLint',  color: 'bg-[#4B32C322] text-[#9d7eef]' },
-    { label: 'GitHub',  color: 'bg-white/10 text-snow' },
-    { label: 'GitLab',  color: 'bg-[#FC6D2622] text-[#f9a97a]' },
-  ],
+const coffeeHighlights = [
+  'Public shop selector and tenant-specific menus',
+  'Role-aware admin workspace for staff, admins, and superadmins',
+  'Orders, KDS queue, inventory, promotions, and customers',
+  'Analytics, tenant settings, staff controls, and audit logs',
+]
+
+const coffeeStack = [
+  'Next.js App Router',
+  'TypeScript',
+  'Prisma',
+  'MySQL',
+  'next-auth',
+  'Tailwind CSS',
+]
+
+const heroTags = ['Portfolio', 'Multi-tenant apps', 'Admin dashboards', 'Vercel-ready']
+
+const stack = [
+  {
+    category: 'Experience',
+    items: ['Product UI', 'Design systems', 'Admin dashboards', 'Responsive web'],
+    tone: 'border-gold/30 bg-gold/10 text-gold-bright',
+  },
+  {
+    category: 'Application',
+    items: ['Next.js', 'React', 'TypeScript', 'Node.js', 'Laravel', 'PHP'],
+    tone: 'border-teal/30 bg-teal/10 text-teal',
+  },
+  {
+    category: 'Data & Ops',
+    items: ['MySQL', 'Prisma', 'Auth', 'Audit trails', 'Vercel', 'GitLab'],
+    tone: 'border-rose/30 bg-rose/10 text-rose',
+  },
+]
+
+const nextBuilds = [
+  {
+    label: '01',
+    title: 'Operational dashboards',
+    copy: 'Readable control surfaces for teams that need to compare, review, and act quickly.',
+  },
+  {
+    label: '02',
+    title: 'Commerce workflows',
+    copy: 'Ordering, inventory, reporting, and customer flows shaped around daily operations.',
+  },
+  {
+    label: '03',
+    title: 'Private tools',
+    copy: 'Focused internal systems with permissions, auditability, and the right amount of polish.',
+  },
+]
+
+function SectionHeader({
+  label,
+  title,
+  copy,
+}: {
+  label: string
+  title: string
+  copy?: string
+}) {
+  return (
+    <div className="mb-12 flex flex-col gap-4 md:mb-16 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p className="font-mono text-xs uppercase text-gold/70">{label}</p>
+        <h2 className="mt-3 font-display text-5xl leading-[0.95] text-snow md:text-7xl">
+          {title}
+        </h2>
+      </div>
+      {copy ? (
+        <p className="max-w-md text-sm leading-7 text-muted md:text-base">
+          {copy}
+        </p>
+      ) : null}
+    </div>
+  )
+}
+
+function CoffeePlatformPreview() {
+  const queue = [
+    { name: 'Iced latte', status: 'preparing', time: '04m' },
+    { name: 'Cortado', status: 'ready', time: '08m' },
+    { name: 'Cold brew', status: 'pending', time: '02m' },
+  ]
+
+  return (
+    <div className="product-screen" aria-label="Coffee Platform interface preview">
+      <div className="product-screen-top">
+        <span>Coffee Platform</span>
+        <span>Tenant: Cafe Luna</span>
+      </div>
+
+      <div className="product-metrics">
+        <div>
+          <span>Active queue</span>
+          <strong>18</strong>
+        </div>
+        <div>
+          <span>Menu items</span>
+          <strong>42</strong>
+        </div>
+        <div>
+          <span>Low stock</span>
+          <strong>05</strong>
+        </div>
+      </div>
+
+      <div className="product-workspace">
+        <div className="product-sidebar">
+          {['Orders', 'KDS', 'Inventory', 'Promos'].map((item, index) => (
+            <span key={item} className={index === 1 ? 'is-active' : undefined}>
+              {item}
+            </span>
+          ))}
+        </div>
+
+        <div className="product-queue">
+          <div className="product-queue-head">
+            <span>Kitchen Display</span>
+            <span>Live SLA</span>
+          </div>
+          {queue.map((item) => (
+            <div key={item.name} className="product-order">
+              <div>
+                <strong>{item.name}</strong>
+                <span>{item.status}</span>
+              </div>
+              <em>{item.time}</em>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function HeroSignal() {
+  return (
+    <div className="hero-board motion-safe:animate-float-slow" aria-hidden="true">
+      <div className="hero-board-header">
+        <span>HG / 2026</span>
+        <span>Manila build room</span>
+      </div>
+      <div className="hero-board-mark">Hermes</div>
+      <div className="hero-board-lines">
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
+      <div className="hero-board-footer">
+        <span>Design</span>
+        <span>Engineering</span>
+        <span>Operations</span>
+      </div>
+    </div>
+  )
 }
 
 export default function Home() {
   return (
-    <main className="pt-14">
+    <main className="overflow-hidden pt-14">
+      <section className="relative isolate min-h-[86svh] px-6 py-20 sm:py-24">
+        <div className="hero-grid" aria-hidden="true" />
 
-      {/* ── HERO ── */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
-
-        {/* subtle grid bg */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `linear-gradient(#c9a84c 1px, transparent 1px),
-                              linear-gradient(90deg, #c9a84c 1px, transparent 1px)`,
-            backgroundSize: '60px 60px',
-          }}
-        />
-
-        {/* purple glow */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-purple/5 blur-[120px] pointer-events-none" />
-
-        <div className="relative z-10 text-center">
-          <p className="font-mono text-xs tracking-[0.4em] text-gold/60 uppercase mb-6 section-fade">
-            Manila · Philippines
-          </p>
-
-          <div className="font-display text-[9rem] leading-none text-gold animate-flicker mb-6 section-fade animate-delay-100">
-            ☿
-          </div>
-
-          <h1 className="font-mono text-xl md:text-2xl tracking-[0.3em] uppercase text-snow mb-6 section-fade animate-delay-200">
-            Hermes Group
-          </h1>
-
-          <div className="gold-line max-w-xs mx-auto mb-6 section-fade animate-delay-300" />
-
-          <p className="font-display text-2xl md:text-3xl italic text-muted max-w-md mx-auto leading-relaxed section-fade animate-delay-400">
-            Born in Manila.<br />Made of many.<br />Known as one.
-          </p>
-
-          <div className="mt-12 flex gap-6 justify-center section-fade animate-delay-500">
-            <a href="#work" className="font-mono text-xs tracking-[0.2em] uppercase text-gold border border-gold/30 px-6 py-3 hover:bg-gold/10 transition-colors">
-              Our Work
-            </a>
-            <Link href="/contact" className="font-mono text-xs tracking-[0.2em] uppercase text-muted border border-border px-6 py-3 hover:border-purple/50 hover:text-snow transition-colors">
-              Contact
-            </Link>
-          </div>
-        </div>
-
-        <a href="#work" className="absolute bottom-10 left-1/2 -translate-x-1/2 font-mono text-xs text-muted/40 tracking-widest animate-bounce">
-          ↓
-        </a>
-      </section>
-
-      {/* ── WORK ── */}
-      <section id="work" className="max-w-5xl mx-auto px-6 py-32">
-        <p className="font-mono text-xs tracking-[0.3em] uppercase text-gold/50 mb-3">// 01</p>
-        <h2 className="font-display text-5xl text-snow mb-16">Selected Work</h2>
-
-        <div className="grid md:grid-cols-2 gap-px bg-border">
-          {/* CoffeePOS card */}
-          <div className="bg-card p-8 group hover:bg-surface transition-colors col-span-2 md:col-span-1">
-            <div className="flex items-start justify-between mb-6">
-              <div>
-                <p className="font-mono text-xs tracking-[0.2em] uppercase text-gold/60 mb-2">
-                  Point of Sale System
-                </p>
-                <h3 className="font-display text-3xl text-snow">Coffee POS</h3>
-              </div>
-              <a
-                href="https://gitlab.com/hermesgroup/coffeepos"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono text-xs text-muted hover:text-gold transition-colors mt-1"
-              >
-                GitLab ↗
-              </a>
-            </div>
-
-            <p className="text-muted text-sm leading-relaxed mb-8 font-light">
-              A full-featured point-of-sale system built for coffee shops. Handles orders, inventory, and reporting — clean interface, solid backend.
+        <div className="relative mx-auto grid max-w-6xl gap-14 pt-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(340px,0.95fr)] lg:items-center">
+          <div className="hero-enter">
+            <p className="font-mono text-xs uppercase text-gold/75">
+              Manila, Philippines
             </p>
-
-            <div className="flex flex-wrap gap-2">
-              {['PHP', 'MySQL', 'Tailwind', 'JavaScript'].map((t) => (
-                <span key={t} className="font-mono text-xs text-purple-glow border border-purple/20 px-3 py-1 bg-purple/5">
-                  {t}
+            <h1 className="mt-5 font-display text-[clamp(4.4rem,13vw,11rem)] leading-[0.82] text-snow">
+              Hermes Group
+            </h1>
+            <p className="mt-8 max-w-2xl text-lg leading-8 text-muted md:text-xl">
+              Born in Manila. Made of many. Known as one. We are a collective
+              of different occupations, disciplines, and after-hours obsessions
+              building software under a shared name.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {heroTags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-border bg-card/70 px-3 py-1.5 font-mono text-xs uppercase text-muted"
+                >
+                  {tag}
                 </span>
               ))}
             </div>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <a href="#work" className="button-primary">
+                See the work
+              </a>
+              <Link href="/contact" className="button-secondary">
+                Start a conversation
+              </Link>
+            </div>
           </div>
 
-          {/* More coming card */}
-          <div className="bg-card p-8 flex flex-col items-center justify-center text-center min-h-[280px] col-span-2 md:col-span-1 border-l border-border">
-            <div className="font-display text-4xl text-border mb-4">☿</div>
-            <p className="font-mono text-xs tracking-[0.2em] uppercase text-muted/40">
-              More in transit
-            </p>
+          <div className="hero-enter hero-enter-delay">
+            <HeroSignal />
           </div>
+        </div>
+
+        <div className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-xs text-muted/60 md:block">
+          <a href="#work" className="soft-link">
+            Scroll to selected work
+          </a>
         </div>
       </section>
 
-      {/* ── STACK ── */}
-      <section className="max-w-5xl mx-auto px-6 py-20 border-t border-border">
-        <p className="font-mono text-xs tracking-[0.3em] uppercase text-gold/50 mb-3">// 02</p>
-        <h2 className="font-display text-5xl text-snow mb-16">What We Use</h2>
+      <section id="work" className="relative px-6 py-24 md:py-32">
+        <div className="mx-auto max-w-6xl">
+          <Reveal>
+            <SectionHeader
+              label="Selected work"
+              title="Coffee Platform"
+              copy="The featured build is a real multi-tenant coffee shop POS and public menu platform, updated here to match the app in the sibling coffee-platform project."
+            />
+          </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {Object.entries(stack).map(([category, items]) => (
-            <div key={category}>
-              <p className="font-mono text-xs tracking-[0.2em] uppercase text-muted mb-4">{category}</p>
-              <div className="flex flex-wrap gap-2">
-                {items.map((item) => (
-                  <span
-                    key={item.label}
-                    className={`font-mono text-xs px-3 py-1.5 rounded-sm ${item.color}`}
-                  >
-                    {item.label}
+          <Reveal delay={120} className="project-showcase">
+            <div className="project-copy">
+              <p className="font-mono text-xs uppercase text-teal">
+                Multi-tenant POS and menu system
+              </p>
+              <h3 className="mt-5 font-display text-4xl leading-tight text-snow md:text-6xl">
+                A coffee platform for menu discovery, shop operations, and
+                kitchen flow.
+              </h3>
+              <p className="mt-6 max-w-2xl text-base leading-8 text-muted">
+                Built around tenant-scoped cafes, public menus, authenticated
+                admin workspaces, role permissions, and the operational tools a
+                coffee shop needs once orders start moving.
+              </p>
+
+              <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                {coffeeHighlights.map((item) => (
+                  <div key={item} className="feature-row">
+                    <span />
+                    <p>{item}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-2">
+                {coffeeStack.map((item) => (
+                  <span key={item} className="stack-pill">
+                    {item}
                   </span>
                 ))}
               </div>
+
+              <div className="mt-10 flex flex-wrap gap-3">
+                <a
+                  href="https://gitlab.com/hermesgroup/coffeepos"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="button-secondary"
+                >
+                  View GitLab
+                </a>
+              </div>
             </div>
-          ))}
+
+            <CoffeePlatformPreview />
+          </Reveal>
+
+          <div className="mt-16 grid gap-px bg-border md:grid-cols-3">
+            {nextBuilds.map((item, index) => (
+              <Reveal key={item.title} delay={index * 90}>
+                <div className="h-full bg-card p-7 transition duration-300 hover:bg-surface">
+                  <p className="font-mono text-xs text-gold/70">{item.label}</p>
+                  <h3 className="mt-5 font-display text-2xl text-snow">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 text-sm leading-7 text-muted">
+                    {item.copy}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ── ABOUT ── */}
-      <section className="max-w-5xl mx-auto px-6 py-32 border-t border-border">
-        <p className="font-mono text-xs tracking-[0.3em] uppercase text-gold/50 mb-3">// 03</p>
-        <h2 className="font-display text-5xl text-snow mb-16">Who We Are</h2>
+      <section className="border-y border-border px-6 py-24 md:py-28">
+        <div className="mx-auto max-w-6xl">
+          <Reveal>
+            <SectionHeader
+              label="Stack"
+              title="What we use"
+              copy="A practical toolkit for interfaces, back-office systems, data-backed apps, and deployment workflows."
+            />
+          </Reveal>
 
-        <div className="grid md:grid-cols-2 gap-16">
-          <div className="space-y-5 text-muted font-light leading-relaxed">
-            <p>
-              We don't have a roster. We don't have titles. What we have is craft — and the honesty to admit that the best work happens when the right people are in the room, regardless of what they call themselves outside of it.
-            </p>
-            <p>
-              Among us you'll find backend engineers, frontend builders, and systems administrators. Some of us make music after hours. Some of us paint. Some of us sleep at 4am because we were debugging, and some because we were writing.
-            </p>
+          <div className="grid gap-8 md:grid-cols-3">
+            {stack.map((group, index) => (
+              <Reveal key={group.category} delay={index * 100}>
+                <div className="stack-group">
+                  <p className="font-mono text-xs uppercase text-muted">
+                    {group.category}
+                  </p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {group.items.map((item) => (
+                      <span
+                        key={item}
+                        className={`rounded-full border px-3 py-1.5 text-xs ${group.tone}`}
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <div className="space-y-8">
-            <blockquote className="border-l border-gold/40 pl-6">
-              <p className="font-display text-2xl italic text-gold/80 leading-relaxed">
-                "No single point of failure.<br />No single face."
+      <section id="about" className="px-6 py-24 md:py-32">
+        <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[0.9fr_1.1fr] md:items-start">
+          <Reveal>
+            <div>
+              <p className="font-mono text-xs uppercase text-gold/70">
+                Who we are
               </p>
-            </blockquote>
-            <p className="font-mono text-xs tracking-[0.2em] uppercase text-muted/50">
-              If it ships under Hermes,<br />it ships as ours — all of ours.
-            </p>
-          </div>
+              <h2 className="mt-3 font-display text-5xl leading-[0.95] text-snow md:text-7xl">
+                Made of many. Known as one.
+              </h2>
+            </div>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <div className="space-y-6 text-base leading-8 text-muted md:text-lg">
+              <p>
+                Hermes Group is less a roster than a signal. Among us are
+                frontend builders, backend engineers, systems administrators,
+                operators, artists, and people whose work outside Hermes may
+                have nothing to do with IT.
+              </p>
+              <p>
+                What joins us is the standard we keep when the room gathers:
+                hand off cleanly, build with intention, and move from the query
+                to the pixel without losing the thread.
+              </p>
+              <p>
+                Some projects are practical, some are strange, and some are
+                still unnamed. If it ships under Hermes, it ships as ours.
+              </p>
+              <blockquote className="border-l border-gold/50 pl-6 font-display text-3xl italic leading-tight text-gold-bright md:text-4xl">
+                No single point of failure. No single face.
+              </blockquote>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
-      <footer className="border-t border-border">
+      <footer className="border-t border-border px-6">
         <div className="gold-line" />
-        <div className="max-w-5xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 py-10 text-sm text-muted md:flex-row">
           <div className="flex items-center gap-3">
-            <span className="font-display text-xl text-gold">☿</span>
-            <span className="font-mono text-xs tracking-[0.2em] text-muted uppercase">Hermes Group</span>
+            <span className="brand-mark">HG</span>
+            <span className="font-mono text-xs uppercase">Hermes Group</span>
           </div>
-          <p className="font-mono text-xs text-muted/40 tracking-wider">Manila · {new Date().getFullYear()}</p>
-          <div className="flex gap-6">
-            <a href="https://gitlab.com/hermesgroup" target="_blank" rel="noopener noreferrer"
-               className="font-mono text-xs tracking-[0.15em] uppercase text-muted hover:text-gold transition-colors">
-              GitLab ↗
+          <p className="font-mono text-xs">
+            Manila / {new Date().getFullYear()}
+          </p>
+          <div className="flex gap-5">
+            <a
+              href="https://gitlab.com/hermesgroup"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="soft-link"
+            >
+              GitLab
             </a>
-            <Link href="/contact"
-               className="font-mono text-xs tracking-[0.15em] uppercase text-muted hover:text-gold transition-colors">
+            <Link href="/contact" className="soft-link">
               Contact
             </Link>
           </div>
         </div>
       </footer>
-
     </main>
   )
 }

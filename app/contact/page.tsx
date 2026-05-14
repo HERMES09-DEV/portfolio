@@ -4,144 +4,135 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 export default function ContactPage() {
-  const [name, setName]       = useState('')
-  const [email, setEmail]     = useState('')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
 
   const handleSend = () => {
     const subject = encodeURIComponent(`Message from ${name || 'a visitor'}`)
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\n${message}`
-    )
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)
     window.location.href = `mailto:hello@hermesgroup.dev?subject=${subject}&body=${body}`
   }
 
   return (
-    <main className="pt-14 min-h-screen flex flex-col">
-
-      {/* top accent */}
+    <main className="flex min-h-screen flex-col pt-14">
       <div className="gold-line" />
 
-      <div className="flex-1 max-w-5xl mx-auto w-full px-6 py-32 grid md:grid-cols-2 gap-20 items-start">
-
-        {/* Left — info */}
+      <div className="mx-auto grid w-full max-w-6xl flex-1 gap-16 px-6 py-24 md:grid-cols-[0.85fr_1fr] md:py-32">
         <div>
-          <p className="font-mono text-xs tracking-[0.3em] uppercase text-gold/50 mb-3">// Contact</p>
-          <h1 className="font-display text-6xl text-snow mb-8 leading-tight">
-            Let's talk.
+          <p className="font-mono text-xs uppercase text-gold/70">Contact</p>
+          <h1 className="mt-3 font-display text-6xl leading-[0.95] text-snow md:text-8xl">
+            Let&apos;s talk.
           </h1>
 
-          <p className="text-muted font-light leading-relaxed mb-12">
-            We prefer the work to speak — but when you need to reach us, we're listening.
+          <p className="mt-8 max-w-md text-base leading-8 text-muted">
+            We prefer the work to speak, but when you need to reach us, we are
+            listening.
           </p>
 
-          <div className="space-y-6">
+          <div className="mt-12 space-y-7">
             <div>
-              <p className="font-mono text-xs tracking-[0.2em] uppercase text-muted/50 mb-2">Email</p>
+              <p className="font-mono text-xs uppercase text-muted/60">Email</p>
               <a
                 href="mailto:hello@hermesgroup.dev"
-                className="font-display text-xl text-gold/80 hover:text-gold transition-colors italic"
+                className="mt-2 inline-flex font-display text-2xl italic text-gold-bright transition hover:text-snow"
               >
                 hello@hermesgroup.dev
               </a>
             </div>
 
             <div>
-              <p className="font-mono text-xs tracking-[0.2em] uppercase text-muted/50 mb-2">GitLab</p>
+              <p className="font-mono text-xs uppercase text-muted/60">GitLab</p>
               <a
                 href="https://gitlab.com/hermesgroup"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-display text-xl text-purple-glow hover:text-snow transition-colors italic"
+                className="mt-2 inline-flex font-display text-2xl italic text-teal transition hover:text-snow"
               >
-                gitlab.com/hermesgroup ↗
+                gitlab.com/hermesgroup
               </a>
             </div>
 
             <div>
-              <p className="font-mono text-xs tracking-[0.2em] uppercase text-muted/50 mb-2">Based in</p>
-              <p className="font-display text-xl italic text-snow/60">Manila, Philippines</p>
+              <p className="font-mono text-xs uppercase text-muted/60">Based in</p>
+              <p className="mt-2 font-display text-2xl italic text-snow/70">
+                Manila, Philippines
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Right — form */}
-        <div className="bg-card border border-border p-8 space-y-6">
-          <p className="font-mono text-xs tracking-[0.2em] uppercase text-muted/50">
+        <div className="border border-border bg-card p-6 md:p-8">
+          <p className="font-mono text-xs uppercase text-muted/60">
             Send a message
           </p>
 
-          <div className="space-y-1">
-            <label className="font-mono text-xs tracking-[0.15em] uppercase text-muted/60">
-              Name
-            </label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Your name"
-              className="w-full bg-void border border-border text-snow font-light text-sm px-4 py-3 placeholder:text-muted/30
-                         focus:outline-none focus:border-purple/50 transition-colors"
-            />
+          <div className="mt-6 space-y-5">
+            <div className="space-y-2">
+              <label className="font-mono text-xs uppercase text-muted/70">
+                Name
+              </label>
+              <input
+                type="text"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                placeholder="Your name"
+                className="w-full border border-border bg-void px-4 py-3 text-sm text-snow outline-none transition placeholder:text-muted/40 focus:border-teal/60"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="font-mono text-xs uppercase text-muted/70">
+                Email
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                placeholder="your@email.com"
+                className="w-full border border-border bg-void px-4 py-3 text-sm text-snow outline-none transition placeholder:text-muted/40 focus:border-teal/60"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="font-mono text-xs uppercase text-muted/70">
+                Message
+              </label>
+              <textarea
+                value={message}
+                onChange={(event) => setMessage(event.target.value)}
+                rows={5}
+                placeholder="What are we building?"
+                className="w-full resize-none border border-border bg-void px-4 py-3 text-sm text-snow outline-none transition placeholder:text-muted/40 focus:border-teal/60"
+              />
+            </div>
+
+            <button onClick={handleSend} className="button-primary w-full">
+              Send via email
+            </button>
+
+            <p className="text-center font-mono text-[10px] text-muted/45">
+              Opens your mail client with the message pre-filled.
+            </p>
           </div>
-
-          <div className="space-y-1">
-            <label className="font-mono text-xs tracking-[0.15em] uppercase text-muted/60">
-              Email
-            </label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="your@email.com"
-              className="w-full bg-void border border-border text-snow font-light text-sm px-4 py-3 placeholder:text-muted/30
-                         focus:outline-none focus:border-purple/50 transition-colors"
-            />
-          </div>
-
-          <div className="space-y-1">
-            <label className="font-mono text-xs tracking-[0.15em] uppercase text-muted/60">
-              Message
-            </label>
-            <textarea
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              rows={5}
-              placeholder="What's on your mind?"
-              className="w-full bg-void border border-border text-snow font-light text-sm px-4 py-3 placeholder:text-muted/30
-                         focus:outline-none focus:border-purple/50 transition-colors resize-none"
-            />
-          </div>
-
-          <button
-            onClick={handleSend}
-            className="w-full font-mono text-xs tracking-[0.2em] uppercase py-4
-                       border border-gold/40 text-gold hover:bg-gold/10 transition-colors"
-          >
-            Send via Email ↗
-          </button>
-
-          <p className="font-mono text-[10px] text-muted/30 text-center">
-            Opens your mail client with the message pre-filled.
-          </p>
         </div>
       </div>
 
-      {/* footer */}
-      <footer className="border-t border-border">
+      <footer className="border-t border-border px-6">
         <div className="gold-line" />
-        <div className="max-w-5xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 py-10 text-sm text-muted md:flex-row">
           <div className="flex items-center gap-3">
-            <span className="font-display text-xl text-gold">☿</span>
-            <span className="font-mono text-xs tracking-[0.2em] text-muted uppercase">Hermes Group</span>
+            <span className="brand-mark">HG</span>
+            <span className="font-mono text-xs uppercase">Hermes Group</span>
           </div>
-          <p className="font-mono text-xs text-muted/40 tracking-wider">Manila · {new Date().getFullYear()}</p>
-          <Link href="/" className="font-mono text-xs tracking-[0.15em] uppercase text-muted hover:text-gold transition-colors">
-            ← Back
+          <p className="font-mono text-xs">
+            Manila / {new Date().getFullYear()}
+          </p>
+          <Link href="/" className="soft-link">
+            Back to work
           </Link>
         </div>
       </footer>
-
     </main>
   )
 }

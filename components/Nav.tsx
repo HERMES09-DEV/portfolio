@@ -3,49 +3,51 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+const links = [
+  { href: '/', label: 'Work' },
+  { href: '/contact', label: 'Contact' },
+]
+
 export default function Nav() {
   const pathname = usePathname()
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-void/80 backdrop-blur-sm">
-      <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
-          <span className="font-display text-2xl text-gold leading-none group-hover:animate-flicker transition-all">
-            ☿
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-void/82 backdrop-blur-xl">
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
+        <Link href="/" className="group flex items-center gap-3">
+          <span className="brand-mark transition duration-300 group-hover:border-gold/70">
+            HG
           </span>
-          <span className="font-mono text-xs tracking-[0.25em] text-muted uppercase">
+          <span className="font-mono text-xs uppercase text-snow">
             Hermes Group
           </span>
         </Link>
 
-        <nav className="flex items-center gap-8">
-          <Link
-            href="/"
-            className={`font-mono text-xs tracking-[0.15em] uppercase transition-colors ${
-              pathname === '/'
-                ? 'text-gold'
-                : 'text-muted hover:text-snow'
-            }`}
-          >
-            Work
-          </Link>
-          <Link
-            href="/contact"
-            className={`font-mono text-xs tracking-[0.15em] uppercase transition-colors ${
-              pathname === '/contact'
-                ? 'text-gold'
-                : 'text-muted hover:text-snow'
-            }`}
-          >
-            Contact
-          </Link>
+        <nav className="flex items-center gap-1 rounded-full border border-border bg-card/70 p-1">
+          {links.map((link) => {
+            const isActive = pathname === link.href
+
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`rounded-full px-3 py-1.5 font-mono text-xs uppercase transition ${
+                  isActive
+                    ? 'bg-snow text-void'
+                    : 'text-muted hover:bg-surface hover:text-snow'
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
+          })}
           <a
             href="https://gitlab.com/hermesgroup"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-xs tracking-[0.15em] uppercase text-muted hover:text-snow transition-colors"
+            className="hidden rounded-full px-3 py-1.5 font-mono text-xs uppercase text-muted transition hover:bg-surface hover:text-snow sm:inline-flex"
           >
-            GitLab ↗
+            GitLab
           </a>
         </nav>
       </div>
