@@ -2,24 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Registered CSS properties ─────────────────────────────────────────── */
+
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* ─── Keyframes ──────────────────────────────────────────────────────────── */
+
+/* CHANGED: added blur for depth on entrance */
 @keyframes heroEnter {
   from {
     opacity: 0;
-    transform: translate3d(0, 24px, 0) scale(0.985);
+    transform: translate3d(0, 28px, 0) scale(0.982);
+    filter: blur(8px);
+  }
+  55% {
+    filter: blur(0);
   }
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
   }
 }
 
+/* CHANGED: added subtle rotation to the float */
 @keyframes floatSlow {
   0%,
   100% {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0) rotate(-0.3deg);
   }
   50% {
-    transform: translate3d(0, -12px, 0);
+    transform: translate3d(0, -10px, 0) rotate(0.3deg);
   }
 }
 
@@ -145,6 +162,13 @@
   }
 }
 
+/* CHANGED: ring-two now uses this to orbit while breathing */
+@keyframes ringOrbit {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+  }
+}
+
 @keyframes nodePulse {
   0%,
   100% {
@@ -168,22 +192,6 @@
   58% {
     border-color: rgba(201, 168, 76, 0.38);
     color: #f3d77b;
-  }
-}
-
-@keyframes panelSweep {
-  0% {
-    opacity: 0;
-    transform: translate3d(-72%, 0, 0);
-  }
-  16%,
-  52% {
-    opacity: 0.42;
-  }
-  72%,
-  100% {
-    opacity: 0;
-    transform: translate3d(72%, 0, 0);
   }
 }
 
@@ -212,20 +220,24 @@
   }
 }
 
+/* CHANGED: added letter-spacing morph — tracks in from wide */
 @keyframes titleReveal {
   from {
     opacity: 0;
     clip-path: inset(0 100% 0 0);
     filter: blur(10px);
+    letter-spacing: 0.25em;
     transform: translate3d(-10px, 0, 0);
   }
-  58% {
+  52% {
     filter: blur(0);
+    letter-spacing: 0;
   }
   to {
     opacity: 1;
     clip-path: inset(0 0 0 0);
     filter: blur(0);
+    letter-spacing: 0;
     transform: translate3d(0, 0, 0);
   }
 }
@@ -245,6 +257,48 @@
 @keyframes contactRing {
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* NEW: conic-gradient border rotation via @property */
+@keyframes rotateBorder {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+/* NEW: button shine sweep on hover */
+@keyframes shimmer {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(110%);
+  }
+}
+
+/* NEW: gold-line draws from center outward */
+@keyframes drawLine {
+  from {
+    clip-path: inset(0 50% 0 50%);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0% 0 0%);
+    opacity: 1;
+  }
+}
+
+/* NEW: metric numbers flash gold */
+@keyframes metricPulse {
+  0%,
+  100% {
+    color: #f4efff;
+  }
+  48%,
+  58% {
+    color: #f3d77b;
+    text-shadow: 0 0 20px rgba(243, 215, 123, 0.45);
   }
 }
 
@@ -309,8 +363,11 @@
 }
 
 @layer components {
+  /* CHANGED: position: relative + overflow: hidden for shimmer */
   .button-primary,
   .button-secondary {
+    position: relative;
+    overflow: hidden;
     display: inline-flex;
     min-height: 44px;
     align-items: center;
@@ -357,6 +414,27 @@
     box-shadow: 0 12px 34px rgba(124, 58, 237, 0.14);
   }
 
+  /* NEW: shimmer sweep on hover */
+  .button-primary::after,
+  .button-secondary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      transparent 100%
+    );
+    transform: translateX(-110%);
+    pointer-events: none;
+  }
+
+  .button-primary:hover::after,
+  .button-secondary:hover::after {
+    animation: shimmer 540ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
   .brand-mark {
     display: inline-flex;
     width: 2rem;
@@ -391,7 +469,7 @@
     text-shadow:
       0 0 26px rgba(124, 58, 237, 0.28),
       0 0 42px rgba(201, 168, 76, 0.12);
-    animation: titleReveal 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: titleReveal 1000ms cubic-bezier(0.16, 1, 0.3, 1) both;
     will-change: clip-path, transform, opacity;
   }
 
@@ -456,12 +534,12 @@
 
   .hero-enter {
     opacity: 0;
-    animation: heroEnter 880ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    will-change: transform, opacity;
+    animation: heroEnter 920ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    will-change: transform, opacity, filter;
   }
 
   .hero-enter-delay {
-    animation-delay: 140ms;
+    animation-delay: 160ms;
   }
 
   .hero-board {
@@ -500,20 +578,23 @@
     opacity: 0.7;
   }
 
+  /* CHANGED: replaced static panelSweep with rotating conic light */
   .hero-board::after {
     content: '';
     position: absolute;
-    inset: -20%;
-    background: linear-gradient(
-      115deg,
-      transparent 32%,
-      rgba(243, 215, 123, 0.08),
-      rgba(192, 132, 252, 0.11),
-      transparent 68%
+    inset: 0;
+    border-radius: 8px;
+    background: conic-gradient(
+      from var(--border-angle) at 50% 50%,
+      transparent 0deg,
+      rgba(243, 215, 123, 0.055) 40deg,
+      rgba(192, 132, 252, 0.07) 160deg,
+      rgba(243, 215, 123, 0.04) 240deg,
+      transparent 360deg
     );
     pointer-events: none;
-    animation: panelSweep 8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-    will-change: transform, opacity;
+    animation: rotateBorder 14s linear infinite;
+    will-change: --border-angle;
   }
 
   .hero-board-scan {
@@ -602,11 +683,17 @@
     animation: ringBreathe 5.5s ease-in-out infinite;
   }
 
+  /* CHANGED: ring-two now breathes AND slowly orbits */
   .hero-ring-two {
     width: min(50%, 208px);
     border-color: rgba(192, 132, 252, 0.28);
     border-style: dashed;
-    animation: ringBreathe 6.8s ease-in-out infinite reverse;
+    transform-origin: center center;
+    animation:
+      ringBreathe 6.8s ease-in-out infinite reverse,
+      orbit 28s linear infinite;
+    /* Override transform from ringBreathe: combined via careful stacking */
+    transform: translate(-50%, -50%);
   }
 
   .hero-symbol {
@@ -773,6 +860,7 @@
     font-size: 0.72rem;
   }
 
+  /* CHANGED: added conic rotating light on ::after (same technique as hero-board) */
   .product-screen {
     position: relative;
     isolation: isolate;
@@ -787,7 +875,8 @@
     transition:
       transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
       border-color 280ms ease,
-      box-shadow 280ms ease;
+      box-shadow 280ms ease,
+      filter 280ms ease;
     will-change: transform;
   }
 
@@ -803,6 +892,26 @@
       100% 36px,
       36px 100%;
     opacity: 0.55;
+  }
+
+  /* NEW: rotating conic light on product screen */
+  .product-screen::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: 8px;
+    background: conic-gradient(
+      from var(--border-angle) at 50% 30%,
+      transparent 0deg,
+      rgba(192, 132, 252, 0.06) 60deg,
+      rgba(243, 215, 123, 0.05) 160deg,
+      transparent 280deg,
+      transparent 360deg
+    );
+    pointer-events: none;
+    animation: rotateBorder 18s linear infinite;
+    will-change: --border-angle;
   }
 
   .product-scanline {
@@ -821,12 +930,13 @@
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(243, 215, 123, 0.75), transparent);
     animation: scanDown 5.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-    box-shadow: 0 0 18px rgba(243, 215, 123, 0.22);
+    will-change: transform, opacity;
   }
 
   .product-screen:hover {
     transform: translate3d(0, -4px, 0);
     border-color: rgba(192, 132, 252, 0.38);
+    filter: brightness(1.04);
     box-shadow:
       0 30px 90px rgba(0, 0, 0, 0.36),
       0 0 55px rgba(124, 58, 237, 0.12);
@@ -892,6 +1002,7 @@
     font-size: 0.76rem;
   }
 
+  /* CHANGED: metrics flash gold periodically */
   .product-metrics strong {
     display: block;
     margin-top: 0.4rem;
@@ -900,6 +1011,15 @@
     font-size: 2rem;
     font-weight: 650;
     line-height: 1;
+    animation: metricPulse 8s ease-in-out infinite;
+  }
+
+  .product-metrics div:nth-child(2) strong {
+    animation-delay: 1.6s;
+  }
+
+  .product-metrics div:nth-child(3) strong {
+    animation-delay: 3.2s;
   }
 
   .product-workspace {
@@ -1064,20 +1184,23 @@
     will-change: transform;
   }
 
+  /* CHANGED: replaced panelSweep with rotateBorder conic */
   .contact-panel::before {
     content: '';
     position: absolute;
-    inset: -20%;
-    background: linear-gradient(
-      115deg,
-      transparent 34%,
-      rgba(243, 215, 123, 0.08),
-      rgba(192, 132, 252, 0.12),
-      transparent 68%
+    inset: 0;
+    border-radius: 8px;
+    background: conic-gradient(
+      from var(--border-angle) at 68% 18%,
+      transparent 0deg,
+      rgba(243, 215, 123, 0.06) 50deg,
+      rgba(192, 132, 252, 0.08) 170deg,
+      transparent 280deg,
+      transparent 360deg
     );
-    animation: panelSweep 7s cubic-bezier(0.65, 0, 0.35, 1) infinite;
     pointer-events: none;
-    will-change: transform, opacity;
+    animation: rotateBorder 16s linear infinite;
+    will-change: --border-angle;
   }
 
   .contact-panel::after {
@@ -1141,25 +1264,31 @@
 }
 
 @layer utilities {
+  /* CHANGED: draws from center on load + added animation */
   .gold-line {
     height: 1px;
     width: 100%;
     background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.85), rgba(124, 58, 237, 0.55), transparent);
+    animation: drawLine 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
+  /* CHANGED: added blur to reveal for depth */
   .reveal {
     opacity: 0;
     transform: translate3d(0, 22px, 0) scale(0.992);
+    filter: blur(3px);
     transition:
       opacity 820ms cubic-bezier(0.16, 1, 0.3, 1),
-      transform 820ms cubic-bezier(0.16, 1, 0.3, 1);
+      transform 820ms cubic-bezier(0.16, 1, 0.3, 1),
+      filter 820ms cubic-bezier(0.16, 1, 0.3, 1);
     transition-delay: var(--reveal-delay, 0ms);
-    will-change: transform, opacity;
+    will-change: transform, opacity, filter;
   }
 
   .reveal.is-visible {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
   }
 }
 
@@ -1221,5 +1350,6 @@
   .hero-enter {
     opacity: 1;
     transform: none;
+    filter: none;
   }
 }

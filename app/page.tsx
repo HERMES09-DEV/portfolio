@@ -6,7 +6,6 @@ const coffeeHighlights = [
   'Shop selector and tenant menus',
   'Role-aware admin workspace',
   'Orders, KDS, inventory, promos',
-  'Analytics, settings, audit logs',
 ]
 
 const coffeeStack = [
@@ -17,8 +16,6 @@ const coffeeStack = [
   'next-auth',
   'Tailwind CSS',
 ]
-
-const heroTags = ['Product UI', 'SaaS', 'Ops tools']
 
 const stack = [
   {
@@ -35,24 +32,6 @@ const stack = [
     category: 'Data & Ops',
     items: ['MySQL', 'Prisma', 'Auth', 'Audit trails', 'Vercel', 'GitLab'],
     tone: 'border-purple-bright/35 bg-purple-bright/10 text-purple-glow',
-  },
-]
-
-const nextBuilds = [
-  {
-    label: '01',
-    title: 'Ops dashboards',
-    copy: 'Dense surfaces for fast decisions.',
-  },
-  {
-    label: '02',
-    title: 'Commerce flow',
-    copy: 'Orders, inventory, reporting.',
-  },
-  {
-    label: '03',
-    title: 'Private systems',
-    copy: 'Permissioned tools that stay tidy.',
   },
 ]
 
@@ -196,6 +175,8 @@ function HeroSignal() {
 export default function Home() {
   return (
     <main className="overflow-hidden pt-14">
+
+      {/* ── Hero ─────────────────────────────────────────────────────── */}
       <section className="relative isolate min-h-[86svh] px-6 py-20 sm:py-24">
         <div className="hero-grid" aria-hidden="true" />
 
@@ -208,20 +189,10 @@ export default function Home() {
               <ScrambleText text="HERMES" />
               <span className="hero-title-tail">Group</span>
             </h1>
-            <p className="mt-8 max-w-2xl text-lg leading-8 text-muted md:text-xl">
-              A Manila-born collective providing SaaS, admin dashboards, and
-              operational tools under one team.
+            <p className="mt-8 max-w-xl text-lg leading-8 text-muted md:text-xl">
+              A Manila-born collective building SaaS, admin dashboards,
+              and operational tools.
             </p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {heroTags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-border bg-card/70 px-3 py-1.5 font-mono text-xs uppercase text-muted"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
             <div className="mt-10 flex flex-wrap gap-3">
               <a href="#work" className="button-primary">
                 See the work
@@ -242,6 +213,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Work ─────────────────────────────────────────────────────── */}
       <section id="work" className="relative px-6 py-24 md:py-32">
         <div className="mx-auto max-w-6xl">
           <Reveal>
@@ -296,25 +268,10 @@ export default function Home() {
 
             <CoffeePlatformPreview />
           </Reveal>
-
-          <div className="mt-16 grid gap-px bg-border md:grid-cols-3">
-            {nextBuilds.map((item, index) => (
-              <Reveal key={item.title} delay={index * 90}>
-                <div className="h-full bg-card p-7 transition duration-300 hover:-translate-y-1 hover:bg-surface">
-                  <p className="font-mono text-xs text-gold/70">{item.label}</p>
-                  <h3 className="mt-5 font-display text-2xl text-snow">
-                    {item.title}
-                  </h3>
-                  <p className="mt-4 text-sm leading-7 text-muted">
-                    {item.copy}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 
+      {/* ── Stack ────────────────────────────────────────────────────── */}
       <section className="border-y border-border px-6 py-24 md:py-28">
         <div className="mx-auto max-w-6xl">
           <Reveal>
@@ -349,6 +306,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── About ────────────────────────────────────────────────────── */}
       <section id="about" className="px-6 py-24 md:py-32">
         <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[0.9fr_1.1fr] md:items-start">
           <Reveal>
@@ -372,14 +330,12 @@ export default function Home() {
               <blockquote className="border-l border-gold/50 pl-6 font-display text-3xl leading-tight text-gold-bright md:text-4xl">
                 No single point of failure. Multifaceted.
               </blockquote>
-              <p className="font-mono text-xs uppercase text-muted/50">
-                A quiet dedication: for Bubba, from Bubba.
-              </p>
             </div>
           </Reveal>
         </div>
       </section>
 
+      {/* ── Footer ───────────────────────────────────────────────────── */}
       <footer className="border-t border-border px-6">
         <div className="gold-line" />
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 py-10 text-sm text-muted md:flex-row">
