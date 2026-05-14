@@ -177,7 +177,7 @@ export default function Home() {
             <p className="font-mono text-xs uppercase text-gold/75">
               Manila, Philippines
             </p>
-            <h1 className="mt-5 font-display text-[clamp(4.4rem,13vw,11rem)] font-black leading-[0.82] text-snow">
+            <h1 className="mt-5 font-display text-[clamp(4.4rem,13vw,11rem)] font-light leading-[0.82] text-snow">
               <ScrambleText text="HERMES Group" />
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-8 text-muted md:text-xl">

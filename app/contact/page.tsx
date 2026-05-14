@@ -11,7 +11,7 @@ export default function ContactPage() {
         <Reveal>
           <div>
             <p className="font-mono text-xs uppercase text-gold/70">Contact</p>
-            <h1 className="mt-3 font-display text-6xl font-black uppercase leading-[0.9] text-snow md:text-8xl">
+            <h1 className="mt-3 font-display text-6xl font-light uppercase leading-[0.9] text-snow md:text-8xl">
               Find the signal.
             </h1>
 
@@ -36,7 +36,7 @@ export default function ContactPage() {
               <p className="font-mono text-xs uppercase text-gold/75">
                 GitLab
               </p>
-              <h2 className="mt-4 font-display text-4xl font-black uppercase text-snow md:text-6xl">
+              <h2 className="mt-4 font-display text-4xl font-light uppercase text-snow md:text-6xl">
                 hermesgroup
               </h2>
               <p className="mt-5 text-sm leading-7 text-muted md:text-base">
