@@ -209,8 +209,8 @@ export default function Home() {
               <span className="hero-title-tail">Group</span>
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-8 text-muted md:text-xl">
-              A Manila-born collective building crisp SaaS, dashboards, and
-              operational tools under one shared mark.
+              A Manila-born collective providing SaaS, admin dashboards, and
+              operational tools under one team.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               {heroTags.map((tag) => (
@@ -258,10 +258,10 @@ export default function Home() {
                 Multi-tenant POS and menu system
               </p>
               <h3 className="mt-5 font-display text-4xl leading-tight text-snow md:text-6xl">
-                Tenant menus, POS, and kitchen flow in one calm system.
+                Tenant menus, POS, and kitchen flow in one system.
               </h3>
               <p className="mt-6 max-w-2xl text-base leading-8 text-muted">
-                Built for cafes that need public menus, staff permissions, and
+                Built for cafes that need modular public menus, staff permissions, and
                 live operational control once orders start moving.
               </p>
 
@@ -357,7 +357,7 @@ export default function Home() {
                 Who we are
               </p>
               <h2 className="mt-3 font-display text-5xl leading-[0.95] text-snow md:text-7xl">
-                Many hands. One mark.
+                Stacked. Team.
               </h2>
             </div>
           </Reveal>
@@ -365,12 +365,12 @@ export default function Home() {
           <Reveal delay={120}>
             <div className="space-y-6 text-base leading-8 text-muted md:text-lg">
               <p>
-                Hermes Group is a Manila-born collective of builders, operators,
-                and artists. We ship practical systems with clean handoffs,
+                Hermes Group is a Manila-born collective of developers, operators,
+                and artisans. We ship practical systems with clean handoffs,
                 sharp interfaces, and software that holds up after launch.
               </p>
               <blockquote className="border-l border-gold/50 pl-6 font-display text-3xl leading-tight text-gold-bright md:text-4xl">
-                No single point of failure. No single face.
+                No single point of failure. Multifaceted.
               </blockquote>
               <p className="font-mono text-xs uppercase text-muted/50">
                 A quiet dedication: for Bubba, from Bubba.
@@ -385,7 +385,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 py-10 text-sm text-muted md:flex-row">
           <div className="flex items-center gap-3">
             <span className="brand-mark">&#9791;</span>
-            <span className="font-mono text-xs uppercase">Hermes Group</span>
+            <span className="font-mono text-xs uppercase">Hermes</span>
           </div>
           <p className="font-mono text-xs">
             Manila / {new Date().getFullYear()}
