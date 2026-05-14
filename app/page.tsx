@@ -18,7 +18,7 @@ const coffeeStack = [
   'Tailwind CSS',
 ]
 
-const heroTags = ['Portfolio', 'Multi-tenant apps', 'Admin dashboards', 'Vercel-ready']
+const heroTags = ['SaaS', 'Multi Tenant Apps', 'Admin Dashboards']
 
 const stack = [
   {
@@ -177,7 +177,7 @@ export default function Home() {
             <p className="font-mono text-xs uppercase text-gold/75">
               Manila, Philippines
             </p>
-            <h1 className="mt-5 font-display text-[clamp(4.2rem,10vw,9rem)] font-light leading-[0.82] text-snow">
+            <h1 className="mt-5 font-display text-[clamp(3.6rem,8.6vw,7.8rem)] font-light leading-[0.86] text-snow">
               <ScrambleText text="HERMES Group" />
             </h1>
             <p className="mt-8 max-w-2xl text-lg leading-8 text-muted md:text-xl">
